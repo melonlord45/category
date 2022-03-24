@@ -34,3 +34,6 @@ Route::get('/test/{id}', [App\Http\Controllers\TestController::class, 'show'])->
 Route::get('/test/{id}/edit' , [App\Http\Controllers\TestController::class, 'edit'])->name('test.edit');
 
 Route::put('/test/{id}/update' , [App\Http\Controllers\TestController::class, 'update'])->name('test.update');
+
+Route::delete('/test/{id}/delete' , [App\Http\Controllers\TestController::class, 'delete'])->name('test.delete');
+

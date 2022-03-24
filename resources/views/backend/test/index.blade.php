@@ -1,5 +1,10 @@
 @extends('backend.layouts.app')
-
+@section('css')
+<!-- DataTables -->
+<link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}"">
+<link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}"">
+@endsection
 @section('title','Home')
 
 @section('content')
@@ -19,7 +24,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example2" class="table table-bordered table-hover">
+                <table id="table" class="table table-bordered table-hover">
                   <thead>
                   <tr>
                     <th>S.N</th>
@@ -33,19 +38,16 @@
                   <tbody>
 
               @foreach($data['rows'] as $row)
-                  <tr>
+                  <tr class >
                     <td>{{ $loop->iteration}} </td>
 
 
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }} </td>
                     <td>{{ $row->created_at}}</td>
-                    <td style="display:flex" >
-                      <a href="{{route('test.show',['id'=> $row->id]) }}" class="btn-success m-1">Show</a>
-                      <a href="{{route('test.edit',['id'=> $row->id]) }}" class="btn-info m-1">Edit</a>
-                    </td>
 
-                    <td class="project-actions text-right">
+
+                    <td class="project-actions text-left">
                     <a class="btn btn-primary btn-sm" href="{{route('test.show',['id'=> $row->id]) }}">
                         <i class="fas fa-folder">
                         </i>
@@ -56,11 +58,16 @@
                         </i>
                         Edit
                     </a>
-                    <a class="btn btn-danger btn-sm" href="#">
-                        <i class="fas fa-trash">
-                        </i>
-                        Delete
-                    </a>
+                        <form action="{{ route('test.delete',['id'=> $row['id']]) }}" method="post">
+                            @method('delete')
+                            @csrf
+                            <button onclick="confirm('Are You Sure?')" class="btn btn-danger btn-sm" type="submit">
+                            <i class="fas fa-trash">
+                            </i>
+                            Delete
+                            </button>
+                        </form>
+
                 </td>
 
                   </tr>
@@ -79,4 +86,19 @@
           </div>
           <!-- /.col -->
         </div>
+@endsection
+
+@section('js')
+<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+<script>
+    $(function () {
+      $('#table').DataTable();
+
+    });
+  </script>
 @endsection

@@ -6,10 +6,14 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+
+    public function __construct(){
+        $this->model = new Test();
+    }
    public function index(){
 
     $date = [];
-    $data['rows'] = Test::get();  // select * from tests
+    $data['rows'] = $this->model->get();  // select * from tests
        return view('backend.test.index',compact('data'));
    }
    public function create(){
@@ -54,6 +58,16 @@ class TestController extends Controller
         $data['row']->update($request->all());
 
         session()->flash('success_message','Data Updated Successfully');
+
+        return redirect()->route('test.index');
+    }
+    public function delete($id){
+
+
+        $data['row'] = Test::find($id);
+
+        $data['row']->delete();
+        session()->flash('success_message','Data Deleted Successfully');
 
         return redirect()->route('test.index');
     }
