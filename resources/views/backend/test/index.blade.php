@@ -44,16 +44,16 @@
 
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }} </td>
-                    <td>{{ $row->created_at}}</td>
+                    <td>{{ $row->created_at ->format('d-m-Y')}}</td>
 
 
-                    <td class="project-actions text-left">
-                    <a class="btn btn-primary btn-sm" href="{{route('test.show',['id'=> $row->id]) }}">
+                    <td style="display: flex">
+                    <a class="btn btn-primary btn-sm mr-2" href="{{route('test.show',['id'=> $row->id]) }}">
                         <i class="fas fa-folder">
                         </i>
                         Show
                     </a>
-                    <a class="btn btn-info btn-sm" href="{{route('test.edit',['id'=> $row->id]) }}">
+                    <a class="btn btn-info btn-sm mr-2" href="{{route('test.edit',['id'=> $row->id]) }}">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
