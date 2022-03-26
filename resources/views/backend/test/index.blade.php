@@ -14,13 +14,27 @@
           <div class="alert alert-success alert-dismissible">
 
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-check"></i> Alert!</h5>
+                  <h5><i class="icon fas fa-check"></i> Congo!</h5>
                   {{session()->get('success_message')}}
+                </div>
+                @endif
+
+                @if(session()->has('error_message'))
+          <div class="alert alert-danger alert-dismissible">
+
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  <h5><i class="icon fas fa-uncheck"></i> Alert!</h5>
+                  {{session()->get('error_message')}}
                 </div>
                 @endif
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                <h3 class="card-title">List Test</h3>
+                <a class="btn btn-success btn-md float-right" href="{{route('test.create')}}">
+                    <i class="fas fa-pencil-alt">
+                    </i>
+                    Create
+                </a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -31,6 +45,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Created Date</th>
+
                     <th>Action</th>
 
                   </tr>
@@ -44,7 +59,8 @@
 
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }} </td>
-                    <td>{{ $row->created_at ->format('d-m-Y')}}</td>
+
+                    <td>{{ $row->created_at->diffForHumans()}}</td>
 
 
                     <td style="display: flex">

@@ -13,7 +13,7 @@ class TestController extends Controller
    public function index(){
 
     $date = [];
-    $data['rows'] = $this->model->get();  // select * from tests
+    $data['rows'] = $this->model->latest() ->get();  // select * from tests
        return view('backend.test.index',compact('data'));
    }
    public function create(){
@@ -22,27 +22,30 @@ class TestController extends Controller
     public function store(Request $request){
         $request ->validate([
             'name'=>'required',
-            'email'=>'required'
-        ],[
-            'name.required'=>'Name is required',
-            'email.required'=>'Email is required'
-        ]);
-        Test::create($request->all());
-
+           'email'=>'required'
+        ]
+        );
+        try{
+            $this->model->create($request->all());
         session()->flash('success_message','Data Inserted Successfully');
+
+        }catch(\Exception $e){
+            session()->flash('error_message', 'Data Insertion Failed');
+        }
+
 
         return redirect()->route('test.index');
     }
 
     public function show($id){
         $data = [];
-        $data['row'] = Test::find($id);
+        $data['row'] = $this->model->findOrFail($id);
 
         return view('backend.test.show',compact('data'));
     }
     public function edit($id){
         $data = [];
-        $data['row'] = Test::find($id);
+        $data['row'] = $this->model->find($id);
 
         return view('backend.test.edit',compact('data'));
     }
@@ -53,7 +56,7 @@ class TestController extends Controller
             'email'=>'required'
         ]);
 
-        $data['row'] = Test::find($id);
+        $data['row'] = $this->model->findorFail($id);
 
         $data['row']->update($request->all());
 
@@ -64,7 +67,7 @@ class TestController extends Controller
     public function delete($id){
 
 
-        $data['row'] = Test::find($id);
+        $data['row'] = $this->model->findorFail($id);
 
         $data['row']->delete();
         session()->flash('success_message','Data Deleted Successfully');
