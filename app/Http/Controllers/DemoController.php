@@ -1,23 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Test;
+use App\Models\Demo;
 use Illuminate\Http\Request;
 
-class TestController extends Controller
+class DemoController extends Controller
 {
 
     public function __construct(){
-        $this->model = new Test();
+        $this->model = new Demo();
     }
-    public function index(){
+    public function demoindex(){
 
         $date = [];
         $data['rows'] = $this->model->latest() ->get();  // select * from tests
-           return view('backend.test.index',compact('data'));
+           return view('backend.demo.demoindex',compact('data'));
        }
-       public function create(){
-        return view('backend.test.create');
+       public function democreate(){
+        return view('backend.demo.democreate');
     }
         public function store(Request $request){
             $request ->validate([
@@ -34,20 +34,20 @@ class TestController extends Controller
             }
 
 
-            return redirect()->route('test.index');
+            return redirect()->route('demo.demoindex');
         }
 
         public function show($id){
             $data = [];
             $data['row'] = $this->model->findOrFail($id);
 
-            return view('backend.test.show',compact('data'));
+            return view('backend.demo.demoshow',compact('data'));
         }
         public function edit($id){
             $data = [];
             $data['row'] = $this->model->find($id);
 
-            return view('backend.test.edit',compact('data'));
+            return view('backend.demo.demoedit',compact('data'));
         }
 
         public function update(Request $request,$id){
@@ -62,7 +62,7 @@ class TestController extends Controller
 
             session()->flash('success_message','Data Updated Successfully');
 
-            return redirect()->route('test.index');
+            return redirect()->route('demo.demoindex');
         }
         public function delete($id){
 
@@ -72,7 +72,7 @@ class TestController extends Controller
             $data['row']->delete();
             session()->flash('success_message','Data Deleted Successfully');
 
-            return redirect()->route('test.index');
+            return redirect()->route('demo.demoindex');
         }
     }
 

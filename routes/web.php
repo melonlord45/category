@@ -37,3 +37,20 @@ Route::put('/test/{id}/update' , [App\Http\Controllers\TestController::class, 'u
 
 Route::delete('/test/{id}/delete' , [App\Http\Controllers\TestController::class, 'delete'])->name('test.delete');
 
+
+//Demo
+Route::get('/demo', [App\Http\Controllers\DemoController::class, 'demoindex'])->name('demo.demoindex');
+
+
+Route::get('/demo/democreate', [App\Http\Controllers\DemoController::class, 'democreate'])->name('demo.democreate');
+
+
+Route::post('/demo', [App\Http\Controllers\DemoController::class, 'store'])->name('demo');
+
+Route::get('/demo/{id}', [App\Http\Controllers\DemoController::class, 'show'])->name('demo.demoshow');
+
+Route::get('/demo/{id}/edit' , [App\Http\Controllers\DemoController::class, 'edit'])->name('demo.demoedit');
+
+Route::put('/demo/{id}/update' , [App\Http\Controllers\DemoController::class, 'update'])->name('demo.demoupdate');
+
+Route::delete('/demo/{id}/delete' , [App\Http\Controllers\DemoController::class, 'delete'])->name('demo.demodelete');
