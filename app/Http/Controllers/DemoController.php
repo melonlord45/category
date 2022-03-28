@@ -13,7 +13,7 @@ class DemoController extends Controller
     public function demoindex(){
 
         $date = [];
-        $data['rows'] = $this->model->latest() ->get();  // select * from tests
+        $data['rows'] = $this->model->latest()->get();  // select * from tests
            return view('backend.demo.demoindex',compact('data'));
        }
        public function democreate(){
