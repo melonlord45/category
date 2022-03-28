@@ -77,7 +77,7 @@
                         <form action="{{ route('test.delete',['id'=> $row['id']]) }}" method="post">
                             @method('delete')
                             @csrf
-                            <button onclick="confirm('Are You Sure?')" class="btn btn-danger btn-sm" type="submit">
+                            <button  class="btn btn-danger btn-sm delete-confirm" type="button">
                             <i class="fas fa-trash">
                             </i>
                             Delete
@@ -117,7 +117,9 @@
       $('#table').DataTable();
 
     });
-    Swal.fire({
+
+    $(".delete-confirm").click(function(){
+        Swal.fire({
   title: 'Are you sure?',
   text: "You won't be able to revert this!",
   icon: 'warning',
@@ -127,12 +129,15 @@
   confirmButtonText: 'Yes, delete it!'
 }).then((result) => {
   if (result.isConfirmed) {
+        $(this).closest("form").submit();
     Swal.fire(
       'Deleted!',
       'Your file has been deleted.',
       'success'
     )
   }
-})
+});
+    })
+
   </script>
 @endsection
