@@ -56,10 +56,17 @@ class TestController extends Controller
                 'email'=>'required'
             ]);
 
+                 try{
+
             $data['row'] = $this->model->findorFail($id);
 
             $data['row']->update($request->all());
             session()->flash('success_message','Data Updated Successfully');
+
+
+            }catch(\Exception $e){
+                session()->flash('error_message', 'Data Insertion Failed');
+            }
 
             return redirect()->route('test.index');
         }
