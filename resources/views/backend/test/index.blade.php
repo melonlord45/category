@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app',['panel' => 'Test' , 'page' => 'List'])
 @section('css')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -10,23 +10,9 @@
 @section('content')
 <div class="row">
           <div class="col-12">
-          @if(session()->has('success_message'))
-          <div class="alert alert-success alert-dismissible">
 
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-check"></i> Congo!</h5>
-                  {{session()->get('success_message')}}
-                </div>
-                @endif
+        @include('backend.includes.flashmessage')
 
-                @if(session()->has('error_message'))
-          <div class="alert alert-danger alert-dismissible">
-
-          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  <h5><i class="icon fas fa-uncheck"></i> Alert!</h5>
-                  {{session()->get('error_message')}}
-                </div>
-                @endif
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">List Test</h3>
@@ -133,7 +119,6 @@
     Swal.fire(
       'Deleted!',
       'Your file has been deleted.',
-      'success'
     )
   }
 });

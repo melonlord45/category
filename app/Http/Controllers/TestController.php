@@ -59,7 +59,6 @@ class TestController extends Controller
             $data['row'] = $this->model->findorFail($id);
 
             $data['row']->update($request->all());
-
             session()->flash('success_message','Data Updated Successfully');
 
             return redirect()->route('test.index');

@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app',['panel' => 'Demo', 'page'=>'Edit'])
 
 @section('title','Home')
 
@@ -18,39 +18,15 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action = "{{route('demo.demoupdate',['id'=>$data['row']->id]) }}" method="POST">
-                @method('put')
-                @csrf
-                <div class="card-body">
-
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" value="{{ $data['row']->name }}" class="form-control" name="name" placeholder="Name">
-                    @if($errors->has('name'))
-                    <span class="text-danger">{{$errors->first('name')}}</span>
-                    @endif
-                  </div>
+              {{ Form::model($data['row'],['route'=>['demo.demoupdate', $data['row']->id], 'method'=>'put']) }}
+              <div class="card-body">
 
 
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" value="{{ $data['row']->email}}" class="form-control" name="email" placeholder="Email">
-                    @if($errors->has('email'))
-                    <span class="text-danger">{{$errors->first('email')}}</span>
-                    @endif
-                  </div>
+                  <div class="card-body">
+                      @include('backend.demo.includes.mainform')
 
-                    </div>
-                  </div>
-                   </div>
-
-                </div>
-                <!-- /.card-body -->
-
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-              </form>
+</div>
+{{ Form::close() }}
             </div>
 
           </div>

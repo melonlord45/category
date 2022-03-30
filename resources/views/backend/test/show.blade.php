@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app',['panel' => 'Demo', 'page'=>'Show'])
 
 @section('title','Home')
 
@@ -22,8 +22,8 @@
                     <td>{{$data['row']->updated_at}}
                 </tr>
             </table>
-            
+
           </div>
-         
+
         </div>
 @endsection

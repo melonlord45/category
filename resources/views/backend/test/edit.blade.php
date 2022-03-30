@@ -1,4 +1,4 @@
-@extends('backend.layouts.app')
+@extends('backend.layouts.app',['panel' => 'Demo', 'page'=>'Edit'])
 
 @section('title','Home')
 
@@ -18,27 +18,17 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form action = "{{route('test.update',['id'=>$data['row']->id]) }}" method="POST">
-                @method('put')
-                @csrf
+              {{ Form::model($data['row'],['route'=>['test.update', $data['row']->id], 'method'=>'put']) }}
                 <div class="card-body">
 
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" value="{{ $data['row']->name }}" class="form-control" name="name" placeholder="Name">
-                    @if($errors->has('name'))
-                    <span class="text-danger">{{$errors->first('name')}}</span>
-                    @endif
-                  </div>
 
+                    <div class="card-body">
+                        @include('backend.test.includes.mainform')
 
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" value="{{ $data['row']->email}}" class="form-control" name="email" placeholder="Email" required>
-                    @if($errors->has('email'))
-                    <span class="text-danger">{{$errors->first('email')}}</span>
-                    @endif
-                  </div>
+</div>
+{{ Form::close() }}
+</div>
+
 
                     </div>
                   </div>
@@ -47,9 +37,6 @@
                 </div>
                 <!-- /.card-body -->
 
-                <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Update</button>
-                </div>
               </form>
             </div>
 
