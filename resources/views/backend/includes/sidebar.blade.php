@@ -31,67 +31,74 @@
             </div>
         </div>
 
-        <!-- Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-        with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Test
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('test.index')}}" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('test.create')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
 
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-        with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>
-                            Demo
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{route('demo.demoindex')}}" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Demo List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('demo.democreate')}}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Demo Create</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+
+
+
+
+    <nav class="mt-4">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                       Catagory
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('catagory.index')}}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('catagory.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+
+    <nav class="mt-4">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+    with font-awesome or any other icon font library -->
+            <li class="nav-item menu-open">
+                <a href="#" class="nav-link active">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>
+                        Sub Catagory
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('subcatagory.index')}}" class="nav-link active">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('subcatagory.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Create</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+
+
+
+</div>
 </aside>

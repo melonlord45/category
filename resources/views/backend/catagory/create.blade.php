@@ -15,7 +15,7 @@
             <div class="card card">
               <div class="card-header">
                 <h3 class="card-title">Insert Data</h3>
-                <a class="btn btn-primary btn-md float-right" href="{{route('test.index')}}">
+                <a class="btn btn-primary btn-md float-right" href="{{route('catagory.index')}}">
                     <i class="fas fa-list">
                     </i>
                    List
@@ -23,10 +23,11 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              {{ Form::open(['route'=>'test','method'=>'post']) }}
+              {{ Form::open(['route'=>'catagory.store','method'=>'post','files'=>true]) }}
 
 
-              @include('backend.test.includes.mainform')
+              @include('backend.catagory.includes.mainform')
+              {{ Form::close()}}
 
 
 
