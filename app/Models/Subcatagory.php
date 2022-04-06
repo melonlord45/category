@@ -11,4 +11,7 @@ class SubCatagory extends Model
         'name','catagory_id','slug','rank','image','short_description','description','meta_title','meta_keyword','meta_description','status','created_by','updated_by'
     ];
     use HasFactory;
+    public function catagory(){
+        return $this->belongsTo(Catagory::class);
+    }
 }

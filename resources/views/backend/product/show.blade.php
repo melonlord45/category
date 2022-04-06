@@ -1,4 +1,4 @@
-@extends('backend.layouts.app',['panel' => 'SubCatagory', 'page'=>'Show'])
+@extends('backend.layouts.app',['panel' => 'Product', 'page'=>'Show'])
 
 @section('title','Home')
 
@@ -11,23 +11,26 @@
                     <th>Id</th>
                     <td>{{$data['row']->id}} </td>
                 </tr>
-                <tr>
 
-                    <th>Image</th>
-                    <td><img src="{{ asset('images/subcatagory/'.$data['row']->image) }}" class="image-fluid" width="160px" height="160px"> </td>
-                </tr>
-                <tr>
-
-                    <th>Name</th>
-                    <td>{{$data['row']->catagory->name}} </td>
-
-                </tr>
                 <tr>
 
                     <th>Catagory</th>
+                    <td>{{$data['row']->catagory->name}} </td>
+
+                </tr>
+
+                <tr>
+
+                    <th>Sub Catagory</th>
+                    <td>{{$data['row']->subcatagory->name}} </td>
+
+                </tr>
+                    <tr>
+                    <th>Name</th>
                     <td>{{$data['row']->name}} </td>
 
                 </tr>
+
                 <tr>
 
                     <th>Slug</th>
@@ -35,9 +38,19 @@
                 </tr>
                         <tr>
 
-                    <th>Rank</th>
-                    <td>{{$data['row']->rank}}</td>
+                    <th>Price</th>
+                    <td>{{$data['row']->price}}</td>
                         </tr>
+                        <tr>
+
+                            <th>Quanittu</th>
+                            <td>{{$data['row']->quantity}}</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Stock</th>
+                                    <td>{{$data['row']->stock}}</td>
+                                        </tr>
                         <tr>
 
                     <th>Short Description</th>

@@ -5,40 +5,37 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Catagory;
 use App\Models\SubCatagory;
+use App\Models\Product;
 
-class SubCatagorycontroller extends Controller
+class ProductController extends Controller
 {
     public function __construct(){
-        $this->model = new Subcatagory();
+        $this->model = new Product();
     }
     public function index(){
 
         $date = [];
-        $data['rows'] = $this->model->latest()->get();  // select * from tests
-           return view('backend.subcatagory.index',compact('data'));
+        $data['rows'] = $this->model->latest()->get();
+           return view('backend.product.index',compact('data'));
        }
        public function create(){
            $data=[];
         $data['catagories'] = Catagory::pluck('name','id');
+        $data['subcatagories'] = SubCatagory::pluck('name','id');
 
-        return view('backend.subcatagory.create',compact('data'));
+        return view('backend.product.create',compact('data'));
     }
         public function store(Request $request){
             $request ->validate([
                 'catagory_id'=>'required',
+                'subcatagory_id'=>'required',
                 'name'=>'required|string|max:255',
-                'rank'=>'required|integer',
                 'slug'=>'required|string|max:255'
-
-            ],['catagory_id.required'=>'Select Catagory Id first.']
+             ],
+             ['catagory_id.required'=>'Select Catagory Id first.'],
+            ['subcatagory_id.required'=>'Select Subcatagory Id first.']
             );
-            //image upload
-            if($request -> hasFile('image_field')){
-                $image = $request->file('image_field');
-                $image_name = time().'_'.$image->getClientOriginalName();
-                $image->move('images/subcatagory',$image_name);
-                $request->request->add(['image'=>  $image_name]);
-            }
+
             try{
                $request->request->add(['created_by' => auth()->user()->id]);
 
@@ -51,22 +48,24 @@ class SubCatagorycontroller extends Controller
             }
 
 
-            return redirect()->route('subcatagory.index');
+            return redirect()->route('product.index');
         }
 
         public function show($slug){
             $data = [];
             $data['row'] = $this->model->where('slug',$slug)->first();
 
-            return view('backend.subcatagory.show',compact('data'));
+            return view('backend.product.show',compact('data'));
         }
         public function edit($slug){
             $data = [];
             $data['catagories'] = Catagory::pluck('name','id');
+            $data['subcatagories'] = Subcatagory::pluck('name','id');
+
             $data['row'] = $this->model->where('slug',$slug)->first();
 
 
-            return view('backend.subcatagory.edit',compact('data'));
+            return view('backend.product.edit',compact('data'));
         }
 
         public function update(Request $request,$slug){
@@ -86,7 +85,7 @@ class SubCatagorycontroller extends Controller
                 session()->flash('error_message', 'Data Insertion Failed');
             }
 
-            return redirect()->route('subcatagory.index');
+            return redirect()->route('product.index');
         }
         public function delete(Request $request,$slug){
 
@@ -96,7 +95,7 @@ class SubCatagorycontroller extends Controller
             $data['row']->delete();
             session()->flash('success_message','Data Deleted Successfully');
 
-            return redirect()->route('subcatagory.index');
+            return redirect()->route('product.index');
         }
     }
 

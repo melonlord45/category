@@ -13,24 +13,28 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_catagories', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('catagory_id')->constrained('catagories');
+            $table->foreignId('subcatagory_id')->constrained('sub_catagories');
             $table->string('name');
             $table->string('slug')->unique();
-            $table->unsignedInteger('rank');
-            $table->string('image')->nullable();
+            $table->unsignedInteger('code')->unique();
             $table->text('short_description')->nullable();
             $table->longText('description')->nullable();
-            $table->string('meta_title')->nullable();
+            $table->unsignedInteger('price');
+            $table->unsignedInteger('quantity');
+            $table->unsignedInteger('stock');
+            $table->boolean('feature_key')->default(0);
+            $table->boolean('flash_key')->default(0);
             $table->string('meta_keyword')->nullable();
+            $table->string('meta_title')->nullable();
             $table->longText('meta_description')->nullable();
             $table->boolean('status')->default(0);
             $table->foreignId('created_by')->constrained('users');
             $table->foreignId('updated_by')->nullable()->constrained('users');
-            $table->foreignId('catagory_id')->constrained('catagories');
-
             $table->timestamps();
-        });
+});
     }
 
     /**
@@ -40,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_catagories');
+        Schema::dropIfExists('products');
     }
 };

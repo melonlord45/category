@@ -8,6 +8,14 @@
     </div>
 
     <div class="form-group row mb-3">
+        {{ Form::label('subcatagory_id', 'Subcatagory*',['class' => 'col-3 col-form-label']) }}
+        <div class="col-6">
+        {{ Form::select('subcatagory_id',$data['subcatagories'],null,['class' =>'form-control', 'id'=>'subcatagory_id','placeholder'=>'Select Sub Catagory Id'])}}
+            @include('backend.includes.validationerror',['fieldname'=>'subcatagory_id'])
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
         {{ Form::label('name', 'Name*',['class' => 'col-3 col-form-label']) }}
         <div class="col-6">
         {{ Form::text('name',null,['class' =>'form-control', 'id'=>'name','placeholder'=>'Name'])}}
@@ -24,10 +32,10 @@
     </div>
 
     <div class="form-group row mb-3">
-        {{ Form::label('rank', 'Rank*',['class' => 'col-3 col-form-label']) }}
+        {{ Form::label('code', 'Code',['class' => 'col-3 col-form-label']) }}
         <div class="col-6">
-        {{ Form::number('rank',null,['class' =>'form-control', 'id'=>'rank','placeholder'=>'Rank'])}}
-            @include('backend.includes.validationerror',['fieldname'=>'rank'])
+        {{ Form::number('code',null,['class' =>'form-control', 'id'=>'code','placeholder'=>'Code'])}}
+            @include('backend.includes.validationerror',['fieldname'=>'code'])
         </div>
     </div>
     <div class="form-group row mb-3">
@@ -44,6 +52,56 @@
             @include('backend.includes.validationerror',['fieldname'=>'description'])
         </div>
     </div>
+    <div class="form-group row mb-3">
+        {{ Form::label('price', 'Price',['class' => 'col-3 col-form-label','step'=>'0.001']) }}
+        <div class="col-6">
+        {{ Form::number('price',null,['class' =>'form-control', 'id'=>'price','placeholder'=>'Price'])}}
+            @include('backend.includes.validationerror',['fieldname'=>'price'])
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        {{ Form::label('quantity', 'Quantity',['class' => 'col-3 col-form-label']) }}
+        <div class="col-6">
+        {{ Form::number('quantity',null,['class' =>'form-control', 'id'=>'quantity','placeholder'=>'Quantity'])}}
+            @include('backend.includes.validationerror',['fieldname'=>'quantity'])
+        </div>
+    </div>
+    <div class="form-group row mb-3">
+        {{ Form::label('stock', 'Stock',['class' => 'col-3 col-form-label']) }}
+        <div class="col-6">
+        {{ Form::number('stock',null,['class' =>'form-control', 'id'=>'stock','placeholder'=>'Stock'])}}
+            @include('backend.includes.validationerror',['fieldname'=>'stock'])
+        </div>
+    </div>
+     <div class="form-group row">
+        <div class="col-3">
+            {{Form::label('feature_key','Feature Key',['class'=>'radiofeaturekey'])}}
+
+        </div>
+        <div class="col-9">
+            <label class="radio-inline">
+            {!! Form::radio('feature_key', 1, true) !!}Yes</label>
+            <label class="radio-inline">
+                {!! Form::radio('feature_key', 0, false) !!}No</label>
+            </label>
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-3">
+            {{Form::label('flash_key','Flash Key',['class'=>'radioflashkey'])}}
+
+        </div>
+        <div class="col-9">
+            <label class="radio-inline">
+            {!! Form::radio('flash_key', 1, true) !!}Yes</label>
+            <label class="radio-inline">
+                {!! Form::radio('flash_key', 0, false) !!}No</label>
+            </label>
+
+        </div>
+    </div>
+
     <div class="form-group row mb-3">
         {{ Form::label('meta_title', 'Meta Title',['class' => 'col-3 col-form-label']) }}
         <div class="col-6">
@@ -66,14 +124,6 @@
         </div>
 
     </div>
-    <div class="form-group row mb-3">
-        {{ Form::label('image_field', 'Image',['class' => 'col-3 col-form-label']) }}
-        <div class="col-6">
-        {{ Form::file('image_field',null,['class' =>'form-control', 'id'=>'image_field'])}}
-            @include('backend.includes.validationerror',['fieldname'=>'image'])
-        </div>
-    </div>
-
 
     <div class="form-group row">
         <div class="col-3">
