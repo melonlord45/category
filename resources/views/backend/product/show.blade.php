@@ -43,7 +43,7 @@
                         </tr>
                         <tr>
 
-                            <th>Quanittu</th>
+                            <th>Quanity</th>
                             <td>{{$data['row']->quantity}}</td>
                                 </tr>
                                 <tr>
