@@ -73,4 +73,15 @@ Route::get('/product/{slug}', [App\Http\Controllers\ProductController::class, 's
 Route::get('/product/{slug}/edit' , [App\Http\Controllers\ProductController::class, 'edit'])->name('product.edit');
 Route::put('/product/{slug}/update' , [App\Http\Controllers\ProductController::class, 'update'])->name('product.update');
 Route::delete('/product/{slug}/delete' , [App\Http\Controllers\ProductController::class, 'delete'])->name('product.delete');
+
+
+
+//tags
+Route::get('/tag', [App\Http\Controllers\TagController::class, 'index'])->name('tag.index');
+Route::get('/tag/create', [App\Http\Controllers\TagController::class, 'create'])->name('tag.create');
+Route::post('/tag/store', [App\Http\Controllers\TagController::class, 'store'])->name('tag.store');
+Route::get('/tag/{slug}', [App\Http\Controllers\TagController::class, 'show'])->name('tag.show');
+Route::get('/tag/{slug}/edit' , [App\Http\Controllers\TagController::class, 'edit'])->name('tag.edit');
+Route::put('/tag/{slug}/update' , [App\Http\Controllers\TagController::class, 'update'])->name('tag.update');
+Route::delete('/tag/{slug}/delete' , [App\Http\Controllers\TagController::class, 'delete'])->name('tag.delete');
 });

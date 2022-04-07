@@ -1,4 +1,4 @@
-@extends('backend.layouts.app',['panel' => 'Subcatagory', 'page'=>'Edit'])
+@extends('backend.layouts.app',['panel' => 'Tag', 'page'=>'Edit'])
 
 @section('title','Home')
 
@@ -15,20 +15,15 @@
             <div class="card card-primary">
               <div class="card-header">
                 <h3 class="card-title">Update Data</h3>
-                <a class="btn btn-primary btn-md float-right" href="{{route('subcatagory.index')}}">
-                    <i class="fas fa-list">
-                    </i>
-                   List
-                </a>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              {{ Form::model($data['row'],['route'=>['subcatagory.update', $data['row']->id], 'method'=>'put']) }}
+              {{ Form::model($data['row'],['route'=>['tag.update', $data['row']->id], 'method'=>'put']) }}
                 <div class="card-body">
 
 
                     <div class="card-body">
-                        @include('backend.subcatagory.includes.mainform')
+                        @include('backend.tag.includes.mainform')
 
 </div>
 {{ Form::close() }}

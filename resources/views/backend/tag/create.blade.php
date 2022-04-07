@@ -1,4 +1,4 @@
-@extends('backend.layouts.app',['panel' => 'Product', 'page'=>'Edit'])
+@extends('backend.layouts.app',['panel' => 'Tags','page' => 'Create'])
 
 @section('title','Home')
 
@@ -14,8 +14,8 @@
             <!-- general form elements -->
             <div class="card card">
               <div class="card-header">
-                <h3 class="card-title">Update Data</h3>
-                <a class="btn btn-primary btn-md float-right" href="{{route('product.index')}}">
+                <h3 class="card-title">Insert Data</h3>
+                <a class="btn btn-primary btn-md float-right" href="{{route('tag.index')}}">
                     <i class="fas fa-list">
                     </i>
                    List
@@ -23,16 +23,12 @@
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              {{ Form::model($data['row'],['route'=>['product.update', $data['row']->id], 'method'=>'put']) }}
-                <div class="card-body">
+              {{ Form::open(['route'=>'tag.store','method'=>'post','files'=>true]) }}
 
 
-                    <div class="card-body">
-                        @include('backend.product.includes.mainform')
+              @include('backend.tag.includes.mainform')
+              {{ Form::close()}}
 
-</div>
-{{ Form::close() }}
-</div>
 
 
                     </div>
@@ -40,18 +36,15 @@
                    </div>
 
                 </div>
-                <!-- /.card-body -->
 
-              </form>
-            </div>
 
           </div>
-          <!--/.col (right) -->
+
         </div>
-        <!-- /.row -->
-      </div><!-- /.container-fluid -->
+
+      </div>
     </section>
-    <!-- /.content -->
+
   </div>
 
 
