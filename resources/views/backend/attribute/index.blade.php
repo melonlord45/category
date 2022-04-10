@@ -1,4 +1,4 @@
-@extends('backend.layouts.app',['panel' => 'Tag' , 'page' => 'List'])
+@extends('backend.layouts.app',['panel' => 'Attribute' , 'page' => 'List'])
 @section('css')
 <!-- DataTables -->
 <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
@@ -15,8 +15,8 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">List Tag</h3>
-                <a class="btn btn-success btn-md float-right" href="{{route('tag.create')}}">
+                <h3 class="card-title">List Attribute</h3>
+                <a class="btn btn-success btn-md float-right" href="{{route('attribute.create')}}">
                     <i class="fas fa-pencil-alt">
                     </i>
                     Create
@@ -29,8 +29,6 @@
                   <tr>
                     <th>S.N</th>
                     <th>Name</th>
-                    <th>Slug</th>
-
                     <th>Created Date</th>
                     <th>Action</th>
 
@@ -44,23 +42,23 @@
 
 
                     <td>{{ $row->name }}</td>
-                    <td>{{ $row->slug }} </td>
+
 
                     <td>{{ $row->created_at->diffForHumans()}}</td>
 
 
                     <td style="display: flex">
-                    <a class="btn btn-primary btn-sm mr-2" href="{{route('tag.show',['slug'=> $row->slug]) }}">
+                    <a class="btn btn-primary btn-sm mr-2" href="{{route('attribute.show',['id'=> $row->id]) }}">
                         <i class="fas fa-folder">
                         </i>
                         Show
                     </a>
-                    <a class="btn btn-info btn-sm mr-2" href="{{route('tag.edit',['slug'=> $row->slug]) }}">
+                    <a class="btn btn-info btn-sm mr-2" href="{{route('attribute.edit',['id'=> $row->id]) }}">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                     </a>
-                        <form action="{{ route('tag.delete',['slug'=> $row['slug']]) }}" method="post">
+                        <form action="{{ route('attribute.delete',['id'=> $row['id']]) }}" method="post">
                             @method('delete')
                             @csrf
                             <button  class="btn btn-danger btn-sm delete-confirm" type="button">

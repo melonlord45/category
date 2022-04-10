@@ -84,4 +84,26 @@ Route::get('/tag/{slug}', [App\Http\Controllers\TagController::class, 'show'])->
 Route::get('/tag/{slug}/edit' , [App\Http\Controllers\TagController::class, 'edit'])->name('tag.edit');
 Route::put('/tag/{slug}/update' , [App\Http\Controllers\TagController::class, 'update'])->name('tag.update');
 Route::delete('/tag/{slug}/delete' , [App\Http\Controllers\TagController::class, 'delete'])->name('tag.delete');
+
+
+
+//attributes
+Route::get('/attribute', [App\Http\Controllers\AttributeController::class, 'index'])->name('attribute.index');
+Route::get('/attribute/create', [App\Http\Controllers\AttributeController::class, 'create'])->name('attribute.create');
+Route::post('/attribute/store', [App\Http\Controllers\AttributeController::class, 'store'])->name('attribute.store');
+Route::get('/attribute/{id}', [App\Http\Controllers\AttributeController::class, 'show'])->name('attribute.show');
+Route::get('/attribute/{id}/edit' , [App\Http\Controllers\AttributeController::class, 'edit'])->name('attribute.edit');
+Route::put('/attribute/{id}/update' , [App\Http\Controllers\AttributeController::class, 'update'])->name('attribute.update');
+Route::delete('/attribute/{id}/delete' , [App\Http\Controllers\AttributeController::class, 'delete'])->name('attribute.delete');
+
+
+
+//producttag
+Route::get('/producttag', [App\Http\Controllers\ProductTagController::class, 'index'])->name('producttag.index');
+Route::get('/producttag/create', [App\Http\Controllers\ProductTagController::class, 'create'])->name('producttag.create');
+Route::post('/producttag/store', [App\Http\Controllers\ProductTagController::class, 'store'])->name('producttag.store');
+Route::get('/producttag/{id}', [App\Http\Controllers\ProductTagController::class, 'show'])->name('producttag.show');
+Route::get('/producttag/{id}/edit' , [App\Http\Controllers\ProductTagController::class, 'edit'])->name('producttag.edit');
+Route::put('/producttag/{id}/update' , [App\Http\Controllers\ProductTagController::class, 'update'])->name('producttag.update');
+Route::delete('/producttag/{id}/delete' , [App\Http\Controllers\ProductTagController::class, 'delete'])->name('producttag.delete');
 });
